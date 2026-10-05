@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CourtFinder - Home</title>
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Internal CSS: styles specific to this page -->
+  <style>
+    .hero {
+      background-color: #10182b;
+      color: #ffffff;
+      padding: 40px 0 50px 0;
+    }
+
+    .hero h1 {
+      font-size: 32px;
+      margin: 0 0 8px 0;
+    }
+
+    .hero p {
+      color: #cfd6e6;
+      max-width: 600px;
+      margin: 0 0 24px 0;
+      font-size: 15px;
+    }
+
+    .hero .buttons {
+      max-width: 500px;
+    }
+
+    .popular {
+      padding: 40px 0;
+    }
+
+    .popular h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .popular-grid {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .court-cards {
+      display: flex;
+      gap: 16px;
+      flex: 1;
+    }
+
+    .court-card {
+      background-color: #f4f5f7;
+      border-radius: 6px;
+      padding: 14px;
+      font-size: 13px;
+      flex: 1;
+    }
+
+    .court-card h3 {
+      font-size: 14px;
+      margin: 0 0 6px 0;
+    }
+
+    .court-card p {
+      margin: 2px 0;
+      color: #444;
+    }
+
+    .popular-photo {
+      flex: 1;
+      max-width: 340px;
+    }
+
+    .popular-photo img {
+      width: 100%;
+      border-radius: 6px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="brand">
+      CourtFinder
+    </div>
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="find-courts.html">Find Courts</a>
+      <a href="court-details.html">Compare</a>
+      <a href="about.html">About</a>
+    </nav>
+    <a href="find-courts.html" class="cta-button">Find Courts</a>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Find Your Next Basketball Court</h1>
+      <p>Find nearby basketball courts and see important details such as crowd levels, lighting, and court quality.</p>
+      <div class="buttons">
+        <button class="btn-primary">Find Courts</button>
+        <button class="btn-primary" style="background-color:#e9761a;">Compare Courts</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Courts -->
+  <section class="popular">
+    <div class="container">
+      <h2>Popular Courts Near You</h2>
+      <div class="popular-grid">
+        <div class="court-cards">
+          <div class="court-card">
+            <h3>Wheeler Hill Park Courts</h3>
+            <p>Columbia, SC</p>
+            <p>Crowd Level: Good</p>
+            <p>Court Quality: 4/5</p>
+          </div>
+          <div class="court-card">
+            <h3>Maxcy Gregg Park Courts</h3>
+            <p>Columbia, SC</p>
+            <p>Crowd Level: Moderate</p>
+            <p>Court Quality: 4/5</p>
+          </div>
+          <div class="court-card">
+            <h3>Emily Douglas Park Courts</h3>
+            <p>Columbia, SC</p>
+            <p>Crowd Level: High</p>
+            <p>Court Quality: 5/5</p>
+          </div>
+        </div>
+        <div class="popular-photo">
+          <img src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=500&q=80" alt="Outdoor basketball court with hoop">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    Contact us: Call at 803-803-8033 or Email at CourtFinderSupport@gmail.com
+  </footer>
+
+</body>
+</html>

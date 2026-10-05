@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CourtFinder - Court Details</title>
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Internal CSS: styles specific to this page -->
+  <style>
+    .court-details {
+      padding: 30px 0 10px 0;
+    }
+
+    .court-layout {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+    }
+
+    .court-left {
+      flex: 0 0 340px;
+    }
+
+    .court-photo {
+      display: block;
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 24px;
+    }
+
+    .about-court {
+      background-color: #10182b;
+      color: #ffffff;
+      padding: 14px 18px;
+      margin-top: 14px;
+    }
+
+    .about-court h2 {
+      font-size: 18px;
+      font-weight: normal;
+      margin: 0 0 8px 0;
+    }
+
+    .about-court p {
+      font-size: 12px;
+      line-height: 1.5;
+      text-align: center;
+      margin: 0;
+    }
+
+    .court-right {
+      flex: 1;
+      text-align: center;
+    }
+
+    .court-right h1 {
+      font-size: 28px;
+      font-weight: normal;
+      margin: 0 0 24px 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      justify-items: center;
+      row-gap: 24px;
+    }
+
+    .stat-card {
+      background-color: #f0821f;
+      color: #1a1a1a;
+      border-radius: 6px;
+      width: 120px;
+      min-height: 80px;
+      padding: 10px 8px;
+      font-size: 13px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .stat-card p {
+      margin: 0;
+    }
+
+    .directions-wrap {
+      margin-top: 60px;
+    }
+
+    .btn-directions {
+      display: inline-block;
+      background-color: #f0821f;
+      color: #1a1a1a;
+      font-size: 20px;
+      padding: 22px 18px;
+    }
+
+    @media (max-width: 800px) {
+      .court-layout {
+        flex-direction: column;
+      }
+
+      .court-left {
+        flex: none;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="brand">
+      Court Finder
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="find-courts.html">Find Courts</a>
+      <a href="court-details.html" class="active">Compare</a>
+      <a href="about.html">About</a>
+    </nav>
+    <a href="find-courts.html" class="cta-button">Find Courts</a>
+  </header>
+
+  <!-- Court details -->
+  <section class="court-details">
+    <div class="container">
+      <div class="court-layout">
+
+        <div class="court-left">
+          <img class="court-photo" src="images/hyatt-park.png" alt="Aerial view of the two outdoor basketball courts at Hyatt Park">
+
+          <div class="about-court">
+            <h2>About this Court</h2>
+            <p>Two outdoor basketball courts available to the general public for pickup games and/or recreational play. The lighting fixtures keep the courts well lit at all times. You can typically expect moderate to high amounts of people during the afternoon into late-evening.</p>
+          </div>
+        </div>
+
+        <div class="court-right">
+          <h1>Hyatt Park</h1>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <p>Crowd Level</p>
+              <p>Moderate/High</p>
+            </div>
+            <div class="stat-card">
+              <p>Court Quality</p>
+              <p>&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+              <p>4/5</p>
+            </div>
+            <div class="stat-card">
+              <p>Lighting</p>
+              <p>Good/Great</p>
+            </div>
+            <div class="stat-card">
+              <p>Distance</p>
+              <p>2.4 Miles</p>
+            </div>
+          </div>
+
+          <div class="directions-wrap">
+            <!-- Inline CSS example -->
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Hyatt+Park" class="btn-directions" style="font-weight: normal;">[Get Directions]</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    Contact us: Call at 803-803-8033 or Email at CourtFinderSupport@gmail.com
+  </footer>
+
+</body>
+</html>

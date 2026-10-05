@@ -1,0 +1,114 @@
+/* ===========================================================
+   style.css — External CSS
+   Shared styles for CourtFinder site (navbar, footer, buttons,
+   base typography, layout helpers)
+   =========================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #1a1a1a;
+  background-color: #ffffff;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #10182b;
+  color: #ffffff;
+  padding: 14px 30px;
+}
+
+.navbar .brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.navbar .brand .badge {
+  background-color: #2c3654;
+  color: #cfd6e6;
+  font-size: 12px;
+  font-weight: normal;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.navbar nav {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  font-size: 15px;
+}
+
+.navbar nav a {
+  padding: 6px 2px;
+}
+
+.navbar nav a.active {
+  font-weight: bold;
+  border-bottom: 2px solid #ffffff;
+}
+
+.navbar .cta-button {
+  background-color: #f0821f;
+  color: #ffffff;
+  padding: 9px 18px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 14px;
+  border: none;
+}
+
+/* ---------- Buttons ---------- */
+.btn-primary {
+  display: block;
+  width: 100%;
+  background-color: #f0821f;
+  color: #ffffff;
+  text-align: center;
+  padding: 16px;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 14px;
+}
+
+.btn-primary:hover {
+  background-color: #d76f14;
+}
+
+/* ---------- Footer ---------- */
+footer.site-footer {
+  background-color: #10182b;
+  color: #cfd6e6;
+  text-align: center;
+  padding: 16px;
+  font-size: 14px;
+}
+
+/* ---------- Layout helpers ---------- */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.section {
+  padding: 40px 0;
+}

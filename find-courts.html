@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CourtFinder - Find Courts</title>
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Internal CSS: styles specific to this page -->
+  <style>
+    .find-panel {
+      background-color: #10182b;
+      color: #ffffff;
+      margin: 28px 30px 0 30px;
+      padding: 24px 22px 20px 22px;
+    }
+
+    .find-panel h1 {
+      font-size: 24px;
+      font-weight: normal;
+      margin: 0 0 14px 0;
+    }
+
+    .find-panel .subtext {
+      font-size: 14px;
+      margin: 0 0 20px 0;
+    }
+
+    /* Search bar */
+    .search-bar {
+      display: flex;
+      align-items: center;
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 10px 16px;
+      margin-bottom: 14px;
+    }
+
+    .search-bar input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      font-family: inherit;
+      color: #1a1a1a;
+    }
+
+    .search-bar button {
+      background: none;
+      border: none;
+      font-size: 17px;
+      font-family: inherit;
+      color: #1a1a1a;
+      cursor: pointer;
+    }
+
+    /* Two columns: filters/results and map */
+    .find-layout {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .find-left {
+      flex: 0 0 365px;
+    }
+
+    .find-right {
+      flex: 1;
+      min-width: 0;
+      text-align: center;
+    }
+
+    /* Filters */
+    .filters-label {
+      font-size: 13px;
+      margin: 0 0 4px 0;
+    }
+
+    .filters {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .filter {
+      display: flex;
+      flex-direction: column;
+      background-color: #d9d9d9;
+      color: #1a1a1a;
+      border-radius: 6px;
+      padding: 4px 8px;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .filter select {
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 12px;
+      color: #1a1a1a;
+      cursor: pointer;
+    }
+
+    /* Results */
+    .results-label {
+      font-size: 13px;
+      margin: 0 0 8px 0;
+    }
+
+    .results-list {
+      max-height: 215px;
+      overflow-y: auto;
+    }
+
+    .court-result {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #d9d9d9;
+      color: #1a1a1a;
+      padding: 4px;
+      margin-bottom: 8px;
+    }
+
+    .court-result img {
+      width: 112px;
+      height: 76px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .court-result .info {
+      flex: 1;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.3;
+    }
+
+    .court-result .info p {
+      margin: 0;
+    }
+
+    /* Map */
+    .find-right h2 {
+      font-size: 24px;
+      font-weight: normal;
+      margin: 0 0 8px 0;
+    }
+
+    .map-image {
+      width: 100%;
+      height: 258px;
+      object-fit: cover;
+      display: block;
+      background-color: #d9d9d9;
+    }
+
+    @media (max-width: 800px) {
+      .find-layout {
+        flex-direction: column;
+      }
+
+      .find-left {
+        flex: none;
+        width: 100%;
+      }
+
+      .find-right {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="brand">
+      Court Finder
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="find-courts.html" class="active">Find Courts</a>
+      <a href="court-details.html">Compare</a>
+      <a href="about.html">About</a>
+    </nav>
+    <a href="find-courts.html" class="cta-button">Find Courts</a>
+  </header>
+
+  <!-- Find courts panel -->
+  <main class="find-panel">
+    <h1>Find Basketball Courts in Your Area</h1>
+    <!-- Inline CSS example -->
+    <p class="subtext" style="font-size: 15px;">Search for courts and find the one that best suits your needs.</p>
+
+    <!-- Search bar -->
+    <div class="search-bar">
+      <input type="text" id="court-search" placeholder="Search for a location or court..." aria-label="Search for a location or court">
+      <button type="button">[Search]</button>
+    </div>
+
+    <div class="find-layout">
+
+      <!-- Filters and results -->
+      <section class="find-left">
+        <p class="filters-label">Filters:</p>
+        <div class="filters">
+          <div class="filter">
+            <label for="filter-location">Location</label>
+            <select id="filter-location">
+              <option>Anywhere</option>
+              <option>Within 5 miles</option>
+              <option>Within 10 miles</option>
+            </select>
+          </div>
+          <div class="filter">
+            <label for="filter-crowd">Crowd Level</label>
+            <select id="filter-crowd">
+              <option>Any</option>
+              <option>Low</option>
+              <option>Moderate</option>
+              <option>High</option>
+            </select>
+          </div>
+          <div class="filter">
+            <label for="filter-lighting">Lighting</label>
+            <select id="filter-lighting">
+              <option>Any</option>
+              <option>Good</option>
+              <option>Great</option>
+            </select>
+          </div>
+          <div class="filter">
+            <label for="filter-quality">Court Quality</label>
+            <select id="filter-quality">
+              <option>Any</option>
+              <option>3+ stars</option>
+              <option>4+ stars</option>
+              <option>5 stars</option>
+            </select>
+          </div>
+        </div>
+
+        <p class="results-label">Court Results</p>
+        <div class="results-list">
+          <div class="court-result">
+            <img src="images/strom-thurmond.png" alt="Indoor courts at Strom Thurmond Fitness Center">
+            <div class="info">
+              <p>Strom Thurmond Fitness Center</p>
+              <p>Columbia, SC</p>
+              <p>Crowd: Moderate</p>
+              <p>Quality: 5/5</p>
+            </div>
+          </div>
+
+          <div class="court-result">
+            <img src="images/finlay-park.png" alt="Outdoor court at Finlay Park">
+            <div class="info">
+              <p>Finlay Park Courts</p>
+              <p>Columbia, SC</p>
+              <p>Crowd: Low</p>
+              <p>Quality: 3.5/5</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Map -->
+      <section class="find-right">
+        <h2>Interactive Map</h2>
+        <img class="map-image" src="images/map.png" alt="Map of the Columbia, SC area showing Court A, Court B and Court C">
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" style="margin-top: 20px;">
+    Contact us: Call at 803-803-8033 or Email at CourtFinderSupport@gmail.com
+  </footer>
+
+</body>
+</html>
