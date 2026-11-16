@@ -1,0 +1,273 @@
+<!--
+  Author: Austin Gasque
+  Date: October 4, 2026
+  Page: About page (about.html)
+  Project: CourtFinder - static website draft
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CourtFinder - About</title>
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Internal CSS: styles specific to this page -->
+  <style>
+    .about-panel {
+      background-color: #10182b;
+      color: #ffffff;
+      margin: 28px 30px 0 30px;
+    }
+
+    .about-top {
+      display: flex;
+      gap: 30px;
+    }
+
+    .about-text {
+      flex: 0 0 340px;
+      padding: 28px 0 0 24px;
+    }
+
+    .about-text h1 {
+      font-size: 24px;
+      font-weight: normal;
+      margin: 0 0 8px 0;
+    }
+
+    .about-text h2 {
+      font-size: 22px;
+      font-weight: normal;
+      margin: 20px 0 8px 0;
+    }
+
+    .about-text p {
+      font-size: 14px;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .about-image {
+      flex: 1;
+      min-width: 0;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .features-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 20px 40px 30px 24px;
+      flex-wrap: wrap;
+    }
+
+    .features-heading {
+      font-size: 20px;
+      font-weight: normal;
+      margin: 0 0 12px 12px;
+    }
+
+    .feature-cards {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .feature-card {
+      background-color: #d9d9d9;
+      color: #1a1a1a;
+      width: 112px;
+      min-height: 128px;
+      padding: 10px 8px;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .feature-card h3 {
+      font-size: 15px;
+      font-weight: normal;
+      margin: 0 0 14px 0;
+    }
+
+    .feature-card p {
+      margin: 0;
+    }
+
+    .ready-text {
+      text-align: center;
+    }
+
+    .ready-text h2 {
+      font-size: 24px;
+      font-weight: normal;
+      margin: 0 0 16px 0;
+    }
+
+    /* ---------- Tablet (800px and below) ---------- */
+    @media (max-width: 800px) {
+      .about-top {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .about-text {
+        flex: none;
+        padding-right: 24px;
+      }
+
+      /* Image spans the full panel width */
+      .about-image {
+        flex: none;
+        width: 100%;
+        height: 220px;
+      }
+    }
+
+    /* ---------- Phone (768px and below) ---------- */
+    @media (max-width: 768px) {
+      .about-panel {
+        margin: 16px 16px 0 16px;
+      }
+
+      .about-text {
+        padding: 20px 16px 0 16px;
+      }
+
+      .about-text h1 {
+        font-size: 26px;
+      }
+
+      .about-text p,
+      .about-text p[style] {
+        font-size: 16px !important;
+        line-height: 1.5;
+      }
+
+      /* Features stack, centered, with even padding */
+      .features-row {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 20px 16px 28px 16px;
+        gap: 28px;
+      }
+
+      .features-heading {
+        margin: 0 0 12px 0;
+      }
+
+      /* Two cards per row instead of fixed-width cards */
+      .feature-cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .feature-card {
+        width: auto;
+        min-height: 150px;
+        padding: 12px 10px;
+        font-size: 14px;
+      }
+
+      .feature-card h3 {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+    }
+
+    /* ---------- Small phones: one card per row ---------- */
+    @media (max-width: 400px) {
+      .feature-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card {
+        min-height: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="brand">
+      CourtFinder
+    </div>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">&#9776;</button>
+    <nav id="main-nav">
+      <a href="index.html">Home</a>
+      <a href="find-courts.html">Find Courts</a>
+      <a href="court-details.html">Compare</a>
+      <a href="about.html" class="active">About</a>
+    </nav>
+    <a href="find-courts.html" class="cta-button">Find Courts</a>
+  </header>
+
+  <!-- About panel -->
+  <main class="about-panel">
+    <div class="about-top">
+      <section class="about-text">
+        <h1>About CourtFinder</h1>
+        <!-- Inline CSS example -->
+        <p style="font-size: 15px;">Making it easier to find the right basketball court for you.</p>
+
+        <h2>What is CourtFinder?</h2>
+        <p>CourtFinder helps basketball players of all skill levels find nearby courts. We help to compare important information between courts so you can decide which court best suits your needs.</p>
+      </section>
+
+      <img class="about-image" src="https://images.unsplash.com/photo-1608245449230-4ac19066d2d0?w=900&amp;q=80" alt="Basketball player shooting at a hoop at sunset">
+    </div>
+
+    <div class="features-row">
+      <section>
+        <h2 class="features-heading">Features</h2>
+        <div class="feature-cards">
+          <div class="feature-card">
+            <h3>Find Nearby Courts</h3>
+            <p>Quickly find basketball courts near your location</p>
+          </div>
+          <div class="feature-card">
+            <h3>Check Crowd Levels</h3>
+            <p>See how busy courts are before you arrive</p>
+          </div>
+          <div class="feature-card">
+            <h3>Compare Courts</h3>
+            <p>Compare courts based on quality, lighting, distance, and crowd levels</p>
+          </div>
+          <div class="feature-card">
+            <h3>Make Better Decisions</h3>
+            <p>Find a court that better fits your preferences and needs</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="ready-text">
+        <h2>Ready to Find<br>Your Court?</h2>
+        <a href="find-courts.html" class="btn-primary" style="max-width: 200px; margin: 0 auto;">Find Courts</a>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" style="margin-top: 20px;">
+    Contact us: Call at 803-803-8033 or Email at CourtFinderSupport@gmail.com
+  </footer>
+
+  <!-- Hamburger menu toggle -->
+  <script>
+    var toggle = document.querySelector('.nav-toggle');
+    var menu = document.getElementById('main-nav');
+    toggle.addEventListener('click', function () {
+      var open = menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+  </script>
+
+</body>
+</html>
