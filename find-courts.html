@@ -45,6 +45,7 @@
 
     .search-bar input {
       flex: 1;
+      min-width: 0;
       border: none;
       outline: none;
       font-size: 14px;
@@ -59,6 +60,25 @@
       font-family: inherit;
       color: #1a1a1a;
       cursor: pointer;
+    }
+
+    .search-bar.invalid {
+      outline: 3px solid #ff8a8a;
+    }
+
+    /* Validation messages */
+    .search-message {
+      font-size: 14px;
+      margin: -4px 0 14px 0;
+      min-height: 20px;
+    }
+
+    .search-message.error {
+      color: #ffb4b4;
+    }
+
+    .search-message.success {
+      color: #a8e6b0;
     }
 
     /* Two columns: filters/results and map */
@@ -179,6 +199,78 @@
         width: 100%;
       }
     }
+
+    /* ---------- Mobile ---------- */
+    @media (max-width: 768px) {
+      .find-panel {
+        margin: 16px 16px 0 16px;
+        padding: 20px 16px;
+      }
+
+      .find-panel h1 {
+        font-size: 26px;
+        line-height: 1.25;
+      }
+
+      .find-panel .subtext,
+      .find-panel p.subtext[style] {
+        font-size: 16px !important;
+      }
+
+      .search-bar {
+        padding: 6px 12px;
+      }
+
+      .search-bar input {
+        font-size: 16px; /* 16px stops iOS from zooming in on focus */
+        min-height: 44px;
+      }
+
+      .search-bar button {
+        min-height: 44px;
+        min-width: 64px;
+      }
+
+      /* Filters become a 2-column grid of larger controls */
+      .filters {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .filter {
+        font-size: 14px;
+        padding: 8px;
+      }
+
+      .filter select {
+        font-size: 16px;
+        min-height: 44px;
+        width: 100%;
+      }
+
+      .filters-label,
+      .results-label {
+        font-size: 15px;
+      }
+
+      .results-list {
+        max-height: 360px;
+      }
+
+      .court-result img {
+        width: 96px;
+        height: 76px;
+      }
+
+      .court-result .info {
+        font-size: 15px;
+      }
+
+      .map-image {
+        height: 220px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -186,9 +278,10 @@
   <!-- Navbar -->
   <header class="navbar">
     <div class="brand">
-      Court Finder
+      CourtFinder
     </div>
-    <nav>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">&#9776;</button>
+    <nav id="main-nav">
       <a href="index.html">Home</a>
       <a href="find-courts.html" class="active">Find Courts</a>
       <a href="court-details.html">Compare</a>
@@ -203,11 +296,14 @@
     <!-- Inline CSS example -->
     <p class="subtext" style="font-size: 15px;">Search for courts and find the one that best suits your needs.</p>
 
-    <!-- Search bar -->
-    <div class="search-bar">
-      <input type="text" id="court-search" placeholder="Search for a location or court..." aria-label="Search for a location or court">
-      <button type="button">[Search]</button>
-    </div>
+    <!-- Search bar (form with JavaScript validation) -->
+    <form id="search-form" novalidate>
+      <div class="search-bar" id="search-bar">
+        <input type="text" id="court-search" name="court-search" placeholder="Search for a location or court..." aria-label="Search for a location or court" aria-describedby="search-message" autocomplete="off">
+        <button type="submit">[Search]</button>
+      </div>
+      <p id="search-message" class="search-message" role="alert" aria-live="polite"></p>
+    </form>
 
     <div class="find-layout">
 
@@ -288,6 +384,59 @@
   <footer class="site-footer" style="margin-top: 20px;">
     Contact us: Call at 803-803-8033 or Email at CourtFinderSupport@gmail.com
   </footer>
+
+  <!-- Hamburger menu toggle -->
+  <script>
+    var toggle = document.querySelector('.nav-toggle');
+    var menu = document.getElementById('main-nav');
+    toggle.addEventListener('click', function () {
+      var open = menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+  </script>
+
+  <!-- JS Project 1: Search form validation -->
+  <script>
+    var form = document.getElementById('search-form');
+    var input = document.getElementById('court-search');
+    var bar = document.getElementById('search-bar');
+    var message = document.getElementById('search-message');
+
+    function showError(text) {
+      message.textContent = text;
+      message.className = 'search-message error';
+      bar.classList.add('invalid');
+      input.setAttribute('aria-invalid', 'true');
+      input.focus();
+    }
+
+    function clearMessage() {
+      message.textContent = '';
+      message.className = 'search-message';
+      bar.classList.remove('invalid');
+      input.removeAttribute('aria-invalid');
+    }
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();               // stop the page from reloading
+      var value = input.value.trim();
+
+      if (value === '') {
+        showError('Please enter a location or court name.');
+      } else if (value.length < 3) {
+        showError('Please enter at least 3 characters.');
+      } else if (!/^[A-Za-z0-9\s.,'-]+$/.test(value)) {
+        showError('Use only letters, numbers, spaces, and basic punctuation.');
+      } else {
+        clearMessage();
+        message.textContent = 'Showing results for "' + value + '".';
+        message.className = 'search-message success';
+      }
+    });
+
+    // Remove the error as soon as the user starts fixing it
+    input.addEventListener('input', clearMessage);
+  </script>
 
 </body>
 </html>
